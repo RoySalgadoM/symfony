@@ -1,0 +1,224 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Customers
+{% endblock %}
+
+{% block stylesheets %} {% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <h1 class="text-center" style="color: white;">Registered customers</h1>
+    <div class="row">
+        <div class="d-grid gap-2 col-12 mx-auto">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-customer" class="btn btn-primary btn-block">Register a customer</button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="table" class="table table-hover table-dark">
+            <thead>
+            <tr>
+                <th scope="col" class="text-center">Modify</th>
+                <th scope="col" class="text-center">Delete</th>
+                <th scope="col">Customer Number</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address Line 1</th>
+                <th scope="col">Address Line 2</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Postal Code</th>
+                <th scope="col">Country</th>
+                <th scope="col">Sales Representative Employee Number</th>
+                <th scope="col">Credit Limit</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            {% for customers in lista %}
+            <tr>
+                <td>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#modal-customer-modify" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                </td>
+                <td>
+                    <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                </td>
+                <td>
+                    {{customers.customernumber}}
+                </td>
+                <td>
+                    {{customers.customername}}
+                </td>
+                <td>
+                    {{customers.contactfirstname}}  {{customers.contactlastname}}
+                </td>
+                <td>
+                    {{customers.phone}}
+                </td>
+                <td>
+                    {{customers.addressline1}}
+                </td>
+                <td>
+                    {{customers.addressline2}}
+                </td>
+                <td>
+                    {{customers.city}}
+                </td>
+                <td>
+                    {{customers.state}}
+                </td>
+                <td>
+                    {{customers.postalcode}}
+                </td>
+                <td>
+                    {{customers.country}}
+                </td>
+                <td>
+                    {{customers.creditlimit}}
+                </td>
+                <td>
+                    {{customers.salesrepemployeenumber}}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="modal-customer" style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: #343a40;">
+                <div class="container-fluid">
+                    <h1 class="text-center">Register a customer</h1>
+                    <hr>
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Customer Number</label>
+                                <input type="number" readonly class="form-control" id="customerNumber" value="" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Customer Name</label>
+                                <input type="text" class="form-control" id="customerName"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="contactFirstName">Contact Firstname</label>
+                                <input type="text" class="form-control" id="contactFirstName"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Contact Lastname</label>
+                                <input type="text" class="form-control" id="contactLastName"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" id="phone"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address Line 1</label>
+                                <input type="text" class="form-control" id="addressLine1"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address Line 2</label>
+                                <input type="text" class="form-control" id="addressLine2"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>City</label>
+                                <input type="text" class="form-control" id="city"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>State</label>
+                                <input type="text" class="form-control" id="state"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Postal Code</label>
+                                <input type="number" class="form-control" id="postalCode"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Country</label>
+                                <input type="text" class="form-control" id="country"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Sales Representative Employee Number</label>
+                                <input type="text" class="form-control" id="salesRepEmployeeNumber"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Credit Limit</label>
+                                <input type="text" class="form-control" id="creditLimit"required>
+                            </div>
+                        </div>
+
+                        <button style="margin-top: 10px;margin-bottom: 10px;" type="button" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-customer-modify" style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: #343a40;">
+                <div class="container-fluid">
+                    <h1 class="text-center">Modify customer</h1>
+                    <hr>
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Customer Number</label>
+                                <input type="number" readonly class="form-control" id="customerNumberM" value="" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Customer Name</label>
+                                <input type="text" class="form-control" id="customerNameM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="contactFirstName">Contact Firstname</label>
+                                <input type="text" class="form-control" id="contactFirstNameM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Contact Lastname</label>
+                                <input type="text" class="form-control" id="contactLastNameM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" id="phoneM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address Line 1</label>
+                                <input type="text" class="form-control" id="addressLine1M"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address Line 2</label>
+                                <input type="text" class="form-control" id="addressLine2M"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>City</label>
+                                <input type="text" class="form-control" id="cityM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>State</label>
+                                <input type="text" class="form-control" id="stateM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Postal Code</label>
+                                <input type="number" class="form-control" id="postalCodeM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Country</label>
+                                <input type="text" class="form-control" id="countryM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Sales Representative Employee Number</label>
+                                <input type="text" class="form-control" id="salesRepEmployeeNumberM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Credit Limit</label>
+                                <input type="text" class="form-control" id="creditLimitM"required>
+                            </div>
+                        </div>
+
+                        <button style="margin-top: 10px;margin-bottom: 10px;" type="button" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Modify</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

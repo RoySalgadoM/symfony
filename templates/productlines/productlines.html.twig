@@ -1,0 +1,126 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Product lines
+{% endblock %}
+
+{% block stylesheets %} {% endblock %}
+{% block body %} 
+
+<div class="container-fluid">
+    <h1 class="text-center" style="color: white;">Registered product lines</h1>
+    <div class="row">
+        <div class="d-grid gap-2 col-12 mx-auto">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-pdtLine" class="btn btn-primary btn-block">Register a product lines</button>
+        </div>
+    </div>
+    <table id="table" class="table table-responsive table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col" class="text-center">Modify</th>
+            <th scope="col" class="text-center">Delete</th>
+            <th scope="col">Product line</th>
+            <th scope="col">Text description</th>
+            <th scope="col">Html description</th>
+            <th scope="col">Image</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {% for pdtLine in lista %}
+        <tr>
+            <td>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#modal-pdtLine-modify" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+            </td>
+            <td>
+                <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+            </td>
+            <td>
+                {{pdtLine.productline}}
+            </td>
+            <td>
+                {{pdtLine.textdescription}}
+            </td>
+            <td>
+                {% if pdtLine.htmldescription == null %}
+                    Sin descripcion
+                {% else %}
+                    {{pdtLine.htmldescription}}
+                {% endif %}
+            </td>
+            <td>
+                {% if pdtLine.image == null %}
+                    Sin imagen
+                {% else %}
+                    {{pdtLine.image}}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}</tbody>
+    </table>
+    <div class="modal fade" id="modal-pdtLine"  style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: #343a40;">
+                <div class="container-fluid">
+                    <h1 class="text-center">Product lines register</h1>
+                    <hr>
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Product line</label>
+                                <input type="text" readonly class="form-control" id="productLine" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Text description</label>
+                                <input type="text" class="form-control" id="textDescription"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Html description</label>
+                                <input type="text" class="form-control" id="htmlDescription"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Image</label>
+                                <input type="text" class="form-control" id="image"required>
+                            </div>
+                        </div>
+
+                        <button style="margin-top: 10px;margin-bottom: 10px;" type="button" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-pdtLine-modify"  style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: #343a40;">
+                <div class="container-fluid">
+                    <h1 class="text-center">Product lines modify</h1>
+                    <hr>
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Product line</label>
+                                <input type="text" readonly class="form-control" id="productLineM" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Text description</label>
+                                <input type="text" class="form-control" id="textDescriptionM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Html description</label>
+                                <input type="text" class="form-control" id="htmlDescriptionM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Image</label>
+                                <input type="text" class="form-control" id="image"required>
+                            </div>
+                        </div>
+
+                        <button style="margin-top: 10px;margin-bottom: 10px;" type="button" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Modify</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

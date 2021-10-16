@@ -1,0 +1,177 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Offices
+{% endblock %}
+
+{% block stylesheets %} {% endblock %}
+{% block body %} 
+
+<div class="container-fluid">
+    <h1 class="text-center" style="color: white;">Registered offices</h1>
+    <div class="row">
+        <div class="d-grid gap-2 col-12 mx-auto">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-office" class="btn btn-primary btn-block">Register an office</button>
+        </div>
+    </div>
+    <table id="table" class="table table-responsive table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col" class="text-center">Modify</th>
+            <th scope="col" class="text-center">Delete</th>
+            <th scope="col">Office code</th>
+            <th scope="col">City</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address Line 1</th>
+            <th scope="col">Address Line 2</th>
+            <th scope="col">State</th>
+            <th scope="col">Country</th>
+            <th scope="col">Postal Code</th>
+            <th scope="col">Territory</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {% for offices in lista %}
+        <tr>
+            <td>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#modal-office-modify" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+            </td>
+            <td>
+                <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+            </td>
+            <td>
+                {{offices.officecode}}
+            </td>
+            <td>
+                {{offices.city}}
+            </td>
+            <td>
+                {{offices.phone}}
+            </td>
+            <td>
+                {{offices.addressline1}}
+            </td>
+            <td>
+                {{offices.addressline2}}
+            </td>
+            <td>
+                {{offices.state}}
+            </td>
+            <td>
+                {{offices.country}}
+            </td>
+            <td>
+                {{offices.postalcode}}
+            </td>
+            <td>
+                {{offices.territory}}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="modal fade" id="modal-office"  style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: #343a40;">
+                <div class="container-fluid">
+                    <h1 class="text-center">Office registration</h1>
+                    <hr>
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Office code</label>
+                                <input type="number" class="form-control" id="officeCode" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>City</label>
+                                <input type="text" class="form-control" id="city"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" id="phone"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address Line 1</label>
+                                <input type="text" class="form-control" id="addressLine1"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address Line 2</label>
+                                <input type="text" class="form-control" id="addressLine2"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>State</label>
+                                <input type="text" class="form-control" id="state"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Country</label>
+                                <input type="text" class="form-control" id="country"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Postal Code</label>
+                                <input type="number" class="form-control" id="postalCode"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Territory</label>
+                                <input type="text" class="form-control" id="territory"required>
+                            </div>
+                        </div>
+
+                       <button style="margin-top: 10px;margin-bottom: 10px;" type="button" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="modal fade" id="modal-office-modify"  style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: #343a40;">
+                <div class="container-fluid">
+                    <h1 class="text-center">Office modify</h1>
+                    <hr>
+                    <form id="formOffice">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Office code</label>
+                                <input type="number" class="form-control" id="officeCodeM" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>City</label>
+                                <input type="text" class="form-control" id="cityM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" id="phoneM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address Line 1</label>
+                                <input type="text" class="form-control" id="addressLine1M"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address Line 2</label>
+                                <input type="text" class="form-control" id="addressLine2M"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>State</label>
+                                <input type="text" class="form-control" id="stateM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Country</label>
+                                <input type="text" class="form-control" id="countryM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Postal Code</label>
+                                <input type="number" class="form-control" id="postalCodeM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Territory</label>
+                                <input type="text" class="form-control" id="territoryM"required>
+                            </div>
+                        </div>
+
+                        <button style="margin-top: 10px;margin-bottom: 10px;" type="button" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Modify</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

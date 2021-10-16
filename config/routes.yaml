@@ -1,0 +1,31 @@
+getCustomers:
+    path: /customers
+    controller: App\Controller\CustomersController::index
+    
+getEmployees:
+    path: /employees
+    controller: App\Controller\EmployeesController::index
+
+getOffices:
+    path: /offices
+    controller: App\Controller\OfficesController::index
+
+getOrdDetails:
+    path: /ordDetails
+    controller: App\Controller\OrderDetailsController::index
+
+getOrders:
+    path: /orders
+    controller: App\Controller\OrdersController::index
+
+getPayments:
+    path: /payments
+    controller: App\Controller\PaymentsController::index
+
+getProductLines:
+    path: /productlines
+    controller: App\Controller\ProductLinesController::index
+
+getProducts:
+    path: /products
+    controller: App\Controller\ProductsController::index

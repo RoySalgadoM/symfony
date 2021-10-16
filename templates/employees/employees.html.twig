@@ -1,0 +1,159 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Employees
+{% endblock %}
+
+{% block stylesheets %} {% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <h1 class="text-center" style="color: white;">Registered employees</h1>
+    <div class="row">
+        <div class="d-grid gap-2 col-12 mx-auto">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-employee" class="btn btn-primary btn-block">Register an employee</button>
+        </div>
+    </div>
+    <table id="table" class="table table-responsive table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col" class="text-center">Modify</th>
+            <th scope="col" class="text-center">Delete</th>
+            <th scope="col">Employee number</th>
+            <th scope="col">Name</th>
+            <th scope="col">Extension</th>
+            <th scope="col">Email</th>
+            <th scope="col">Office code</th>
+            <th scope="col">Reports to</th>
+            <th scope="col">Job title</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for employees in lista %}
+        <tr>
+            <td>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#modal-employees-modify" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+            </td>
+            <td>
+                <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+            </td>
+            <td>
+                {{employees.employeenumber}}
+            </td>
+            <td>
+                {{employees.firstname}}  {{employees.lastname}}
+            </td>
+            <td>
+                {{employees.extension}}
+            </td>
+            <td>
+                {{employees.email}}
+            </td>
+            <td>
+                {{employees.officecode}}
+            </td>
+            <td>
+                {{employees.reportsto}}
+            </td>
+            <td>
+                {{employees.jobtitle}}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="modal fade" id="modal-employee"  style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: #343a40;">
+                <div class="container-fluid">
+                    <h1 class="text-center">Customer registration</h1>
+                    <hr>
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Employee Number</label>
+                                <input type="number" readonly class="form-control" id="employeeNumber" value="" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Lastname</label>
+                                <input type="text" class="form-control" id="lastName"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="contactFirstName">Firstname</label>
+                                <input type="text" class="form-control" id="firstName"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Extension</label>
+                                <input type="text" class="form-control" id="extension"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Email</label>
+                                <input type="text" class="form-control" id="email"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Office code</label>
+                                <input type="text" class="form-control" id="officeCode"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Reports to</label>
+                                <input type="text" class="form-control" id="reportsTo"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Job title</label>
+                                <input type="text" class="form-control" id="jobTitle"required>
+                            </div>
+                        </div>
+                        <button style="margin-top: 10px;margin-bottom: 10px;" type="button" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-employees-modify"  style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: #343a40;">
+                <div class="container-fluid">
+                    <h1 class="text-center">Customer modify</h1>
+                    <hr>
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Employee Number</label>
+                                <input type="number" readonly class="form-control" id="employeeNumberM" value="" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Lastname</label>
+                                <input type="text" class="form-control" id="lastNameM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="contactFirstName">Firstname</label>
+                                <input type="text" class="form-control" id="firstNameM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Extension</label>
+                                <input type="text" class="form-control" id="extensionM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Email</label>
+                                <input type="text" class="form-control" id="emailM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Office code</label>
+                                <input type="text" class="form-control" id="officeCodeM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Reports to</label>
+                                <input type="text" class="form-control" id="reportsToM"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Job title</label>
+                                <input type="text" class="form-control" id="jobTitleM"required>
+                            </div>
+                        </div>
+                        <button style="margin-top: 10px;margin-bottom: 10px;" type="button" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Modify</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
